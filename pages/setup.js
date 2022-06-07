@@ -20,8 +20,12 @@ export default function Setup() {
 
     return (
         <>
+            <h1 className="text-green-900 text-4xl text-center pt-5">
+                Welcome to JobAwesome!
+            </h1>
+
             <form
-                className="mt-10 mx-20"
+                className="mt-5 mx-20"
                 onSubmit={async (e) => {
                     e.preventDefault()
                     await fetch("/api/setup", {
@@ -39,6 +43,9 @@ export default function Setup() {
                     router.push("/")
                 }}
             >
+                <h2 className="text-green-900 text-2xl pt-5">
+                    find your place
+                </h2>
                 <div className="font-bold">Please enter your name</div>
                 <input
                     type="text"
@@ -47,7 +54,10 @@ export default function Setup() {
                     onChange={(e) => setName(e.target.value)}
                     className="border p-1 border-green-900 rounded-md"
                 />
-                <div className="pt-5 font-bold flex flex-row">
+                <h2 className="text-green-900 text-2xl  pt-5">
+                    find your people
+                </h2>
+                <div className="font-bold flex flex-row">
                     <input
                         type="checkbox"
                         name="company"
@@ -55,6 +65,7 @@ export default function Setup() {
                         onChange={(e) => setCompany(!company)}
                         className="border p-1 border-green-900 rounded-md "
                     />
+
                     <div className="pl-2">
                         check this box if you are an employer and want to post
                         jobs
