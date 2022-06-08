@@ -5,13 +5,14 @@ import Job from "components/Job"
 
 export default function Company({ jobs, company }) {
     return (
-        <div className="pt-10 px-10">
-            <h2 className="mb-10 text-3xl font-bold">
-                Profile of {company.name}
+        <div className="m-10">
+            <h2 className="pb-5 mb-5 text-3xl font-bold border-0 border-b-2 border-b-green-900">
+                Welcome to the{" "}
+                <span className="text-green-500"> {company.name} </span>job page
             </h2>
-            <div className="pl-16 pr-16 -mt-6">
+            <div className="">
                 <p className="text-center text-xl font-bold">
-                    Jobs at {company.name}
+                    All jobs at {company.name}
                 </p>
                 {jobs.map((job, index) => (
                     <Job key={index} job={job} />

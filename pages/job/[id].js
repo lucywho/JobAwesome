@@ -4,10 +4,10 @@ import Link from "next/link"
 
 export default function Job({ job }) {
     return (
-        <div className="pt-10 mx-5">
+        <div className="pt-10 mx-10">
             <div className="text-xl text-green-900 font-bold">{job.title}</div>
-            <div className="text-l text-gray-900 pl-5">{job.description}</div>
-            <div className="text-green-900 pl-5">
+            <div className="text-l text-gray-900">{job.description}</div>
+            <div className="text-green-900">
                 <span className="font-light">posted by : </span>
                 <span className="font-bold hover:underline">
                     <Link href={`/company/${job.author.id}`}>
