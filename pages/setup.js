@@ -21,7 +21,7 @@ export default function Setup() {
     return (
         <>
             <h1 className="text-green-900 text-4xl text-center pt-5">
-                Welcome to JobAwesome!
+                Welcome to <span className="text-green-500">JobAwesome!</span>
             </h1>
 
             <form

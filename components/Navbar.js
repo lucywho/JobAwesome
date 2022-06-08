@@ -8,14 +8,15 @@ const Navbar = () => {
 
     return (
         <div className="w-full h-12 px-10 border-b-2 bg-green-900 text-yellow-100 font-bold border-b-green-900 flex flex-row justify-between items-center">
-            <div className="pt-2">
+            {/* <div className="pt-2">
                 <Image
                     src="/jobawesome.png"
                     alt="job awesome logo"
                     width="45"
                     height="45"
                 />
-            </div>
+            </div> */}
+            <div className="text-green-400 text-4xl">JobAwesome</div>
             <Link href="/"> Home </Link>
             <Link href="/"> My Profile* </Link>
             {session && (
