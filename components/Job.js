@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
 
-const Job = ({ job }) => {
+const Job = ({ job, isDashboard }) => {
     const router = useRouter()
     let poster = true
 
@@ -15,6 +15,16 @@ const Job = ({ job }) => {
             <div className="border-l-2 border-green-700">
                 <div className="text-xl text-green-900 font-bold hover:underline pl-5 ">
                     <Link href={`/job/${job.id}`}>{job.title}</Link>
+                    {isDashboard && job.published && (
+                        <span className="bg-green-900 text-yellow-200 uppercase text-xs p-1 rounded-lg float-right">
+                            ✅ Published
+                        </span>
+                    )}
+                    {isDashboard && !job.published && (
+                        <span className="bg-green-900 text-yellow-200 uppercase text-xs p-1 rounded-lg float-right">
+                            ❌ Unpublished
+                        </span>
+                    )}
                 </div>
                 <div className="text-l text-gray-900 pl-5">
                     {job.description}

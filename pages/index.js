@@ -33,9 +33,11 @@ export default function Home({ jobs, user }) {
                                     click here to post a new job
                                 </button>
                             </Link>
-                            <button className="px-4 py-2 mt-2 ml-5 font-bold rounded-full bg-green-900 text-yellow-100 hover:bg-green-500 hover:text-green-900">
-                                see all the jobs you posted
-                            </button>
+                            <Link href={"/dashboard"}>
+                                <button className="px-4 py-2 mt-2 ml-5 font-bold rounded-full bg-green-900 text-yellow-100 hover:bg-green-500 hover:text-green-900">
+                                    see all the jobs you posted
+                                </button>
+                            </Link>
                         </>
                     ) : (
                         <>
