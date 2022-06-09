@@ -6,6 +6,8 @@ import Jobs from "components/Jobs"
 export default function Dashboard({ jobs, user }) {
     const { data: session, status } = useSession()
 
+    console.log("dashboard user: ", user)
+
     return (
         <>
             <div className="mx-10 border-0 border-b-2 border-b-green-800 pb-5">
