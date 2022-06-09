@@ -62,6 +62,11 @@ export default function Home({ jobs, user }) {
 
 export async function getServerSideProps(context) {
     const session = await getSession(context)
+    console.log("session in index: ", session)
+
+    if (!session) {
+        //need a check here to allow page to load for non-logged in users
+    }
 
     let jobs = await getJobs(prisma)
     jobs = JSON.parse(JSON.stringify(jobs))
