@@ -9,6 +9,7 @@ import { getUser } from "lib/data"
 export default function Home({ jobs, user }) {
     const router = useRouter()
     const { data: session, status } = useSession()
+    console.log("index user: ", user) //returns user data
 
     if (session && !session.user.name) {
         router.push("/setup")
