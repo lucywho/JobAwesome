@@ -15,7 +15,7 @@ export default function Navbar({ user }) {
                 <p className="hover:underline">Home</p>
             </Link>
             <Link href="/dashboard">
-                <p className="hover:underline">Your Dashboard</p>
+                <p className="hover:underline">Dashboard</p>
             </Link>
             {/* {user.company ? (
                 <Link href="/dashboard">

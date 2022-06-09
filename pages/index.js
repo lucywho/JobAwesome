@@ -59,9 +59,11 @@ export default function Home({ jobs, user }) {
                         </>
                     ) : (
                         <>
-                            <button className="px-4 py-2 mt-2 font-bold rounded-full bg-green-900 text-yellow-100 hover:bg-green-500 hover:text-green-900">
-                                see all the jobs you&apos;ve applied for
-                            </button>
+                            <Link href={"/dashboard"}>
+                                <button className="px-4 py-2 mt-2 font-bold rounded-full bg-green-900 text-yellow-100 hover:bg-green-500 hover:text-green-900">
+                                    see all the jobs you&apos;ve applied for
+                                </button>
+                            </Link>
                         </>
                     )}
                 </div>
