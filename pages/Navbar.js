@@ -14,7 +14,10 @@ export default function Navbar({ user }) {
             <Link href="/">
                 <p className="hover:underline">Home</p>
             </Link>
-            {user.company ? (
+            <Link href="/dashboard">
+                <p className="hover:underline">Your Dashboard</p>
+            </Link>
+            {/* {user.company ? (
                 <Link href="/dashboard">
                     <p className="hover:underline">Your Dashboard</p>
                 </Link>
@@ -22,7 +25,7 @@ export default function Navbar({ user }) {
                 <Link href="/dashboard">
                     <p className="hover:underline">My Profile</p>
                 </Link>
-            )}
+            )} */}
             {session && (
                 <button
                     className="font-bold hover:underline"
