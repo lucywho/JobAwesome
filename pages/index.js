@@ -71,7 +71,7 @@ export default function Home({ jobs, user }) {
                 <div className="text-center p-4">
                     <h2 className="text-4xl font-bold">Find a place!</h2>
                 </div>
-                <Jobs jobs={jobs} />
+                <Jobs jobs={jobs} user={user} />
             </div>
         </>
     )
@@ -79,15 +79,10 @@ export default function Home({ jobs, user }) {
 
 export async function getServerSideProps(context) {
     const session = await getSession(context)
-    console.log("session in index: ", session)
     let user
 
     if (!session) {
-        user = {
-            name: "default",
-            id: 0,
-            real: false,
-        }
+        user = false
     } else {
         user = await getUser(session.user.id, prisma)
         user = JSON.parse(JSON.stringify(user))
