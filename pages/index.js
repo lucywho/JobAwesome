@@ -17,16 +17,33 @@ export default function Home({ jobs, user }) {
 
     return (
         <>
+            {!session && (
+                <div className="mx-10 border-0 border-b-2 border-b-green-800 pb-5 my-5 font-bold text-2xl text-green-900 text-center">
+                    <div>
+                        Welcome to{" "}
+                        <p className="text-green-600 ">
+                            JobAwesome: Find your place, find your people.
+                        </p>
+                    </div>
+                    <div className="mt-2 text-xl">
+                        Please sign in to find{" "}
+                        <span className="text-green-600">your </span>
+                        place and people
+                    </div>
+                </div>
+            )}
             {session && (
-                <div className="mx-10 border-0 border-b-2 border-b-green-800 pb-5">
+                <div className="mx-10 border-0 border-b-2 border-b-green-800 pb-5 text-green-900">
                     <p className="my-5 font-bold text-2xl">
-                        Welcome, {user.name}
+                        Welcome,{" "}
+                        <span className="text-green-600">{user.name}</span>
                         {user.company && (
                             <span className="bg-green-500 text-green-900 uppercase text-xs ml-2 p-2 rounded-lg">
                                 Company
                             </span>
                         )}
                     </p>
+
                     {user.company ? (
                         <>
                             <Link href={"/new"}>
@@ -50,9 +67,9 @@ export default function Home({ jobs, user }) {
                 </div>
             )}
 
-            <div className="p-10">
-                <div className="text-center p-4 m-0">
-                    <h2 className=" text-4xl font-bold">Find a job!</h2>
+            <div>
+                <div className="text-center p-4">
+                    <h2 className="text-4xl font-bold">Find a place!</h2>
                 </div>
                 <Jobs jobs={jobs} />
             </div>
@@ -69,6 +86,7 @@ export async function getServerSideProps(context) {
         user = {
             name: "default",
             id: 0,
+            real: false,
         }
     } else {
         user = await getUser(session.user.id, prisma)

@@ -1,20 +1,25 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
 
-const Job = ({ job, isDashboard }) => {
+const Job = ({ job, isDashboard, real }) => {
     const router = useRouter()
     let poster = true
 
     if (router.pathname !== "/") {
         poster = false
-        console.log("poster: ", poster)
     }
 
     return (
         <div className="pt-10 mx-5">
             <div className="border-l-2 border-green-700">
-                <div className="text-xl text-green-900 font-bold hover:underline pl-5 ">
-                    <Link href={`/job/${job.id}`}>{job.title}</Link>
+                <div className="text-xl text-green-900 font-bold pl-5 ">
+                    {real ? (
+                        <Link href={`/job/${job.id}`}>
+                            <span className="hover:underline">{job.title}</span>
+                        </Link>
+                    ) : (
+                        <p className="hover:no-underline">{job.title}</p>
+                    )}
                     {isDashboard && job.published && (
                         <span className="bg-green-900 text-yellow-200 uppercase text-xs p-1 rounded-lg float-right">
                             ✅ Published
