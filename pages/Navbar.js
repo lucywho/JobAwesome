@@ -1,11 +1,7 @@
 import { useSession, getSession } from "next-auth/react"
 import Link from "next/link"
-// import prisma from "lib/prisma"
-// import { getUser } from "lib/data"
 
 export default function Navbar({ user }) {
-    //console.log("nav user: ", user) //returns undefined
-
     const { data: session, status } = useSession()
 
     return (
@@ -17,15 +13,7 @@ export default function Navbar({ user }) {
             <Link href="/dashboard">
                 <p className="hover:underline">Dashboard</p>
             </Link>
-            {/* {user.company ? (
-                <Link href="/dashboard">
-                    <p className="hover:underline">Your Dashboard</p>
-                </Link>
-            ) : (
-                <Link href="/dashboard">
-                    <p className="hover:underline">My Profile</p>
-                </Link>
-            )} */}
+
             {session && (
                 <Link
                     href="/api/auth/signout"
@@ -44,21 +32,4 @@ export default function Navbar({ user }) {
             )}
         </div>
     )
-}
-
-export async function getServerSideProps(context) {
-    const session = await getSession(context)
-    console.log("session in navbar: ", session) //doesn't fire
-
-    if (!session) return alert("no session")
-
-    let user = await getUser(session.user.id, prisma)
-
-    console.log("user: ", user) //doesn't fire
-
-    return {
-        props: {
-            user,
-        },
-    }
 }

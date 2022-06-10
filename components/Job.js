@@ -65,6 +65,7 @@ const Job = ({ job, isDashboard, signedIn }) => {
                 <div className="text-l text-gray-900 pl-5">
                     <Slug contents={job.description} />
                 </div>
+
                 {poster && (
                     <div className="text-green-900 pl-5">
                         <span className="font-light">posted by </span>

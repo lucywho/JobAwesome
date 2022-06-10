@@ -58,11 +58,15 @@ export default function Home({ jobs, user, signedIn }) {
                         </>
                     ) : (
                         <>
-                            <Link href={"/dashboard"}>
-                                <button className="px-4 py-2 mt-2 font-bold rounded-full bg-green-900 text-yellow-100 hover:bg-green-500 hover:text-green-900">
-                                    see all the jobs you&apos;ve applied for
-                                </button>
-                            </Link>
+                            <p>
+                                Go to your{" "}
+                                <Link href={"/dashboard"}>
+                                    <span className="font-bold text-green-700 hover:underline">
+                                        dashboard
+                                    </span>
+                                </Link>{" "}
+                                to see all the jobs you've applied for
+                            </p>
                         </>
                     )}
                 </div>
@@ -70,7 +74,7 @@ export default function Home({ jobs, user, signedIn }) {
 
             <div>
                 <div className="text-center p-4">
-                    <h2 className="text-4xl font-bold">Find a place!</h2>
+                    <h2 className="text-4xl font-bold">Find your place!</h2>
                 </div>
                 <Jobs jobs={jobs} signedIn={signedIn} />
             </div>

@@ -70,7 +70,7 @@ model Job {
   salary       String?
   location     String?
   published    Boolean @default(true)
-  author       User     @relation(fields: [authorId], references: [id])
+  author       User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
   authorId     String 
   applications  Application[]
 }
@@ -80,6 +80,6 @@ model Application {
   coverletter String
   job         Job     @relation(fields: [jobId], references: [id])
   jobId       Int
-  author      User    @relation(fields:[authorId], references: [id])
+  author      User    @relation(fields:[authorId], references: [id], onDelete: Cascade)
   authorId    String
 }
