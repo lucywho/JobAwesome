@@ -4,7 +4,7 @@ import Link from "next/link"
 // import { getUser } from "lib/data"
 
 export default function Navbar({ user }) {
-    console.log("nav user: ", user) //returns undefined
+    //console.log("nav user: ", user) //returns undefined
 
     const { data: session, status } = useSession()
 
