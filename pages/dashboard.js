@@ -2,12 +2,13 @@ import { getSession, useSession } from "next-auth/react"
 import prisma from "lib/prisma"
 import Link from "next/link"
 import { getJobsPosted, getUser, getApplications } from "lib/data"
-import Jobs from "components/Jobs"
+import Job from "components/Job"
+import Slug from "components/Slug"
 
 export default function Dashboard({ jobs, user, applications }) {
     const { data: session, status } = useSession()
 
-    console.log("dashboard user: ", user)
+    //console.log("dashboard user: ", user)
 
     return (
         <>
@@ -25,7 +26,82 @@ export default function Dashboard({ jobs, user, applications }) {
                             <p className="mt-2 ml-10 text-2xl text-green-900">
                                 You have posted the following jobs
                             </p>
-                            <Jobs jobs={jobs} isDashboard={true} />
+                            <div>
+                                {jobs.map((job, index) => (
+                                    <>
+                                        <Job
+                                            key={index}
+                                            job={job}
+                                            isDashboard={true}
+                                        />
+
+                                        <div className="ml-20">
+                                            {job.applications.length === 0 ? (
+                                                <p className="my-2 font-normal text-green-900">
+                                                    No applications yet
+                                                </p>
+                                            ) : (
+                                                <p className="my-2 font-normal text-green-900">
+                                                    There{" "}
+                                                    {job.applications.length >
+                                                    1 ? (
+                                                        <span>are </span>
+                                                    ) : (
+                                                        <span>is </span>
+                                                    )}
+                                                    <span className="font-bold">
+                                                        {
+                                                            job.applications
+                                                                .length
+                                                        }
+                                                    </span>{" "}
+                                                    application
+                                                    {job.applications.length >
+                                                        1 && (
+                                                        <span>s</span>
+                                                    )}{" "}
+                                                    for this position
+                                                </p>
+                                            )}
+                                        </div>
+                                        <div className="ml-20 mt-2">
+                                            {job.applications?.map(
+                                                (application, index) => (
+                                                    <>
+                                                        <p>
+                                                            <span className="text-base font-bold mt-3 mr-3">
+                                                                {
+                                                                    application
+                                                                        .author
+                                                                        .name
+                                                                }
+                                                            </span>
+                                                            <Link
+                                                                href={`mailto:${application.author.email}`}
+                                                            >
+                                                                <span className="hover:underline">
+                                                                    {
+                                                                        application
+                                                                            .author
+                                                                            .email
+                                                                    }
+                                                                </span>
+                                                            </Link>
+                                                        </p>
+                                                        <p>
+                                                            <Slug
+                                                                coverletter={
+                                                                    application.coverletter
+                                                                }
+                                                            />
+                                                        </p>
+                                                    </>
+                                                )
+                                            )}
+                                        </div>
+                                    </>
+                                ))}
+                            </div>
                         </>
                     ) : (
                         <>
