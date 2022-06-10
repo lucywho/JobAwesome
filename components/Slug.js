@@ -1,15 +1,13 @@
 import { useState } from "react"
 
-const Slug = ({ coverletter }) => {
+const Slug = ({ contents }) => {
     const [seeMore, setSeeMore] = useState(false)
-    let slug = coverletter.slice(0, 29)
-
-    console.log("seeMore :", seeMore)
+    let slug = contents.slice(0, 249)
 
     return (
         <>
-            {coverletter.length <= 30 && <>{coverletter}</>}
-            {coverletter.length > 30 && (
+            {contents.length <= 250 && <>{contents}</>}
+            {contents.length > 250 && (
                 <>
                     {!seeMore && (
                         <>
@@ -24,7 +22,7 @@ const Slug = ({ coverletter }) => {
                     )}
                     {seeMore && (
                         <>
-                            {coverletter}
+                            {contents}
                             <span className="hover:underline italic text-yellow-900  pl-1 hover:text-green-800">
                                 <button onClick={() => setSeeMore(false)}>
                                     {" "}

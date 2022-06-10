@@ -3,12 +3,15 @@ import prisma from "lib/prisma"
 import Link from "next/link"
 import { getSession } from "next-auth/react"
 import { getUser } from "lib/data"
+import Slug from "components/Slug"
 
 export default function Job({ job, user, applied }) {
     return (
         <div className="pt-10 mx-10">
             <div className="text-xl text-green-900 font-bold">{job.title}</div>
-            <div className="text-l text-gray-900 mb-3">{job.description}</div>
+            <div className="text-l text-gray-900 mb-3">
+                <Slug contents={job.description} />
+            </div>
             <div className="text-green-900">
                 <span className="font-light">posted by : </span>
                 <span className="font-bold hover:underline">

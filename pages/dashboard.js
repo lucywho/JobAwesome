@@ -8,8 +8,6 @@ import Slug from "components/Slug"
 export default function Dashboard({ jobs, user, applications }) {
     const { data: session, status } = useSession()
 
-    //console.log("dashboard user: ", user)
-
     return (
         <>
             <div className="mx-10 border-0 border-b-2 border-b-green-800 pb-5">
@@ -17,6 +15,13 @@ export default function Dashboard({ jobs, user, applications }) {
                     Welcome to your dashboard
                     <span className="text-green-500"> {user.name}</span>
                 </p>
+                {user.company && (
+                    <Link href={"/new"}>
+                        <button className="px-4 py-2 mt-2 font-bold rounded-full bg-green-900 text-yellow-100 hover:bg-green-500 hover:text-green-900">
+                            click here to post a new job
+                        </button>
+                    </Link>
+                )}
             </div>
 
             {session && (
@@ -90,7 +95,7 @@ export default function Dashboard({ jobs, user, applications }) {
                                                         </p>
                                                         <p>
                                                             <Slug
-                                                                coverletter={
+                                                                contents={
                                                                     application.coverletter
                                                                 }
                                                             />

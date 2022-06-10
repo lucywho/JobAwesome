@@ -9,8 +9,6 @@ import { getUser } from "lib/data"
 export default function Home({ jobs, user, signedIn }) {
     const router = useRouter()
     const { data: session, status } = useSession()
-    console.log("index user: ", user) //returns user data
-    console.log("signedIn in index", signedIn)
 
     if (session && !session.user.name) {
         router.push("/setup")
@@ -47,16 +45,16 @@ export default function Home({ jobs, user, signedIn }) {
 
                     {user.company ? (
                         <>
-                            <Link href={"/new"}>
-                                <button className="px-4 py-2 mt-2 font-bold rounded-full bg-green-900 text-yellow-100 hover:bg-green-500 hover:text-green-900">
-                                    click here to post a new job
-                                </button>
-                            </Link>
-                            <Link href={"/dashboard"}>
-                                <button className="px-4 py-2 mt-2 ml-5 font-bold rounded-full bg-green-900 text-yellow-100 hover:bg-green-500 hover:text-green-900">
-                                    see all the jobs you posted
-                                </button>
-                            </Link>
+                            <p>
+                                Go to your{" "}
+                                <Link href={"/dashboard"}>
+                                    <span className="font-bold text-green-700 hover:underline">
+                                        dashboard
+                                    </span>
+                                </Link>{" "}
+                                to post new jobs and for information on all your
+                                open and closed jobs
+                            </p>
                         </>
                     ) : (
                         <>

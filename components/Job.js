@@ -1,10 +1,10 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
+import Slug from "./Slug"
 
 const Job = ({ job, isDashboard, signedIn }) => {
     const router = useRouter()
     let poster = true
-    console.log("signedin in Job: ", signedIn)
 
     if (router.pathname !== "/") {
         poster = false
@@ -22,18 +22,48 @@ const Job = ({ job, isDashboard, signedIn }) => {
                         <p className="hover:no-underline">{job.title}</p>
                     )}
                     {isDashboard && job.published && (
-                        <span className="bg-green-900 text-yellow-200 uppercase text-xs p-1 rounded-lg float-right">
-                            ✅ Published
+                        <span
+                            className="bg-green-900 text-yellow-200 uppercase text-xs p-1 rounded-lg float-right"
+                            onClick={async () => {
+                                await fetch("/api/job", {
+                                    body: JSON.stringify({
+                                        id: job.id,
+                                        task: "unpublish",
+                                    }),
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                    },
+                                    method: "PUT",
+                                })
+                                router.reload(window.location.pathname)
+                            }}
+                        >
+                            ✅ Published: click to unpublish.
                         </span>
                     )}
                     {isDashboard && !job.published && (
-                        <span className="bg-green-900 text-yellow-200 uppercase text-xs p-1 rounded-lg float-right">
-                            ❌ Unpublished
+                        <span
+                            className="bg-green-900 text-yellow-200 uppercase text-xs p-1 rounded-lg float-right"
+                            onClick={async () => {
+                                await fetch("/api/job", {
+                                    body: JSON.stringify({
+                                        id: job.id,
+                                        task: "publish",
+                                    }),
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                    },
+                                    method: "PUT",
+                                })
+                                router.reload(window.location.pathname)
+                            }}
+                        >
+                            ❌ Unpublished: click to publish.
                         </span>
                     )}
                 </div>
                 <div className="text-l text-gray-900 pl-5">
-                    {job.description}
+                    <Slug contents={job.description} />
                 </div>
                 {poster && (
                     <div className="text-green-900 pl-5">
