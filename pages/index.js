@@ -65,7 +65,7 @@ export default function Home({ jobs, user, signedIn }) {
                                         dashboard
                                     </span>
                                 </Link>{" "}
-                                to see all the jobs you've applied for
+                                to see all the jobs you&apos;ve applied for
                             </p>
                         </>
                     )}

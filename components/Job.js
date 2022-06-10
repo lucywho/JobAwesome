@@ -10,6 +10,8 @@ const Job = ({ job, isDashboard, signedIn }) => {
         poster = false
     }
 
+    console.log("job: ", job)
+
     return (
         <div className="pt-10 mx-5">
             <div className="border-l-2 border-green-700">
@@ -64,6 +66,21 @@ const Job = ({ job, isDashboard, signedIn }) => {
                 </div>
                 <div className="text-l text-gray-900 pl-5">
                     <Slug contents={job.description} />
+                </div>
+                <div className="text-l text-gray-900 pl-5">
+                    {job.salary && (
+                        <>
+                            <span className="font-bold">Salary:</span>{" "}
+                            {job.salary}{" "}
+                        </>
+                    )}
+                    {job.location && (
+                        <>
+                            {" "}
+                            <span className="font-bold"> Location:</span>{" "}
+                            {job.location}
+                        </>
+                    )}
                 </div>
 
                 {poster && (
