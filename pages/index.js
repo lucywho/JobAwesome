@@ -6,10 +6,11 @@ import Jobs from "components/Jobs"
 import { getJobs } from "lib/data"
 import { getUser } from "lib/data"
 
-export default function Home({ jobs, user }) {
+export default function Home({ jobs, user, signedIn }) {
     const router = useRouter()
     const { data: session, status } = useSession()
     console.log("index user: ", user) //returns user data
+    console.log("signedIn in index", signedIn)
 
     if (session && !session.user.name) {
         router.push("/setup")
@@ -73,7 +74,7 @@ export default function Home({ jobs, user }) {
                 <div className="text-center p-4">
                     <h2 className="text-4xl font-bold">Find a place!</h2>
                 </div>
-                <Jobs jobs={jobs} user={user} />
+                <Jobs jobs={jobs} signedIn={signedIn} />
             </div>
         </>
     )
@@ -82,12 +83,15 @@ export default function Home({ jobs, user }) {
 export async function getServerSideProps(context) {
     const session = await getSession(context)
     let user
+    let signedIn
 
     if (!session) {
         user = false
+        signedIn = false
     } else {
         user = await getUser(session.user.id, prisma)
         user = JSON.parse(JSON.stringify(user))
+        signedIn = true
     }
 
     let jobs = await getJobs(prisma)
@@ -97,6 +101,7 @@ export async function getServerSideProps(context) {
         props: {
             jobs,
             user,
+            signedIn,
         },
     }
 }

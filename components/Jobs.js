@@ -1,6 +1,6 @@
 import Job from "components/Job"
 
-const Jobs = ({ jobs, isDashboard, user }) => {
+const Jobs = ({ jobs, isDashboard, signedIn }) => {
     if (!jobs) return null
 
     return (
@@ -10,7 +10,7 @@ const Jobs = ({ jobs, isDashboard, user }) => {
                     key={index}
                     job={job}
                     isDashboard={isDashboard}
-                    user={user}
+                    signedIn={signedIn}
                 />
             ))}
         </>

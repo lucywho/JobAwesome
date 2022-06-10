@@ -1,10 +1,10 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
 
-const Job = ({ job, isDashboard, user }) => {
+const Job = ({ job, isDashboard, signedIn }) => {
     const router = useRouter()
     let poster = true
-    console.log("user in Job: ", user)
+    console.log("signedin in Job: ", signedIn)
 
     if (router.pathname !== "/") {
         poster = false
@@ -14,7 +14,7 @@ const Job = ({ job, isDashboard, user }) => {
         <div className="pt-10 mx-5">
             <div className="border-l-2 border-green-700">
                 <div className="text-xl text-green-900 font-bold pl-5 ">
-                    {user ? (
+                    {signedIn ? (
                         <Link href={`/job/${job.id}`}>
                             <span className="hover:underline">{job.title}</span>
                         </Link>
