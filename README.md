@@ -1,34 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+## JobAwesome Job Board
+From a [tutorial](https://github.com/flaviocopes/bootcamp-2022-week-10-job-board) by [Flavio Copes](https://github.com/flaviocopes)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+### Personal additions
+- navigation bar
+- conditional rendering of sign in / sign out button
+- Welcome message and reduced functionality for non-signed in users
+- displays first 250 characters of job postings and application letters, with ...see more function
+- displays location and salary information where given
+- "apply now" button not rendered for company users, and and "posted by" information not rendered on company's own dashboard
+- conditional display of plural when there is more than one application
+- allows company to email applicants direct
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Deployed on Vercel
+[JobAwesome](https://job-board-red.vercel.app/)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### App images
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+![image](public/jobawesome-front.png)
+![image](public/jobawesome-company.png)
+![image](public/jobawesome-companydash.png)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
