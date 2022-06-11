@@ -36,3 +36,23 @@ export default NextAuth({
         },
     },
 })
+
+// export default NextAuth({
+//     providers: [
+//         EmailProvider({
+//             server: process.env.EMAIL_SERVER,
+//             from: process.env.EMAIL_FROM,
+//         }),
+//     ],
+
+//     database: process.env.DATABASE_URL,
+//     secret: process.env.SECRET,
+
+//     session: {
+//         jwt: true,
+//         maxAge: 30 * 24 * 60 * 60, //30 days
+//     },
+
+//     debug: true,
+//     adapter: PrismaAdapter(prisma),
+// })

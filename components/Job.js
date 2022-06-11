@@ -10,8 +10,6 @@ const Job = ({ job, isDashboard, signedIn }) => {
         poster = false
     }
 
-    console.log("job: ", job)
-
     return (
         <div className="pt-10 mx-5">
             <div className="border-l-2 border-green-700">
