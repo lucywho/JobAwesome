@@ -1,9 +1,9 @@
-import { getSession, useSession } from "next-auth/react"
-import prisma from "lib/prisma"
 import Link from "next/link"
-import { getJobsPosted, getUser, getApplications } from "lib/data"
+import { getSession, useSession } from "next-auth/react"
 import Job from "components/Job"
 import Slug from "components/Slug"
+import prisma from "lib/prisma"
+import { getJobsPosted, getUser, getApplications } from "lib/data"
 
 export default function Dashboard({ jobs, user, applications }) {
     const { data: session, status } = useSession()

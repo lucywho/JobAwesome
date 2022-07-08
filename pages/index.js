@@ -12,6 +12,7 @@ export default function Home({ jobs, user, signedIn }) {
 
     if (session && !session.user.name) {
         router.push("/setup")
+        return null
     }
 
     return (
